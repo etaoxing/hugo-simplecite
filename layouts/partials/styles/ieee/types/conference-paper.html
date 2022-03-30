@@ -7,13 +7,13 @@
 {{- end -}}
 
 {{- with index . "container-title" -}}
-  In Proc. {{ . }},&#32;
+  In <em>{{ . }}</em>,&#32;
 {{- end -}}
-
-{{- partial "styles/ieee/parts/year" (dict "bibentries" . "timeFieldName" "issued") -}}
 
 {{- with partial "styles/ieee/parts/volume-issue-pages" . -}}
-  , {{ . }}.&#32;
+  {{ . }},&#32;
 {{- end -}}
+
+{{- partial "styles/ieee/parts/year" (dict "bibentries" . "timeFieldName" "issued") -}}.&#32;
 
 {{- partial "styles/ieee/parts/doi-url" . -}}
