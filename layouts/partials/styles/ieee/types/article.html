@@ -2,8 +2,16 @@
   {{ . }},&#32;
 {{- end -}}
 
-{{- with partial "styles/ieee/parts/full-title" . -}}
-  &ldquo;{{ . }},&rdquo;&#32;
+{{- if .URL -}}
+  <a class="hugo-simplecite-url-hyperlink" rel="noopener" target="_blank" href="{{ .URL }}">
+  {{- with partial "styles/ieee/parts/full-title" . -}}
+    &ldquo;{{ . }},&rdquo;
+  {{- end -}}
+  </a>&#32;
+{{- else -}}
+  {{- with partial "styles/ieee/parts/full-title" . -}}
+    &ldquo;{{ . }},&rdquo;&#32;
+  {{- end -}}
 {{- end -}}
 
 {{- with index . "container-title" -}}
@@ -16,4 +24,4 @@
 
 {{- partial "styles/ieee/parts/year" (dict "bibentries" . "timeFieldName" "issued") -}}.&#32;
 
-{{- partial "styles/ieee/parts/doi-url" . -}}
+<!-- {{- partial "styles/ieee/parts/doi-url" . -}} -->
